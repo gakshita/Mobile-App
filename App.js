@@ -23,7 +23,7 @@ export default function App({ navigation }) {
           name="drawer"
           component={My_drawer}
           options={{
-            title: "M Y  A P P",
+            title: "M Y H O M E",
             headerTintColor: "black",
 
             headerLeft: navigation => (
