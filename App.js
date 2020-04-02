@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer, TabActions } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createStackNavigator, } from "@react-navigation/stack";
+import { createDrawerNavigator,DrawerActions } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Button } from "react-native-paper";
 import MyHome from "./componants/myhome";
@@ -15,38 +15,54 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function App({ navigation }) {
+export default function App() {
+  // console.log(navigation , "navi")
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="drawer"
           component={My_drawer}
-          options={{
-            title: "M Y  A P P",
-            headerTintColor: "black",
-
-            headerLeft: navigation => (
-              <Button
-                icon="format-list-bulleted"
-                color="black"
-                style={{ width: 1 }}
-                onPress={() => navigation.openDrawer()}
-              ></Button>
-            ),
-            headerStyle: {
-              backgroundColor: "#fff"
-            }
-          }}
+          // options={({ navigation, route })=>({
+          //   title: "M Y  A P P",
+          //   headerTintColor: "black",
+            
+          //   headerLeft: (props) => (
+          //     // console.log(navigation.dispatch(DrawerActions.openDrawer()) , "navi"),
+          //     <Button
+          //       icon="format-list-bulleted"
+          //       color="black"
+          //       style={{ width: 1 }}
+          //       onPress={() => navigation.openDrawer()}
+          //     ></Button>
+          //   ),
+          //   headerStyle: {
+          //     backgroundColor: "#fff"
+          //   }
+          // })}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem
+        label="Close drawer"
+        onPress={() => props.navigation.closeDrawer()}
+      />
+      <DrawerItem
+        label="Toggle drawer"
+        onPress={() => props.navigation.toggleDrawer()}
+      />
+    </DrawerContentScrollView>
+  );
+  }
 function My_drawer() {
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator  initialRouteName="Home" >
       <Drawer.Screen
         name="Home"
         component={MyHome}
