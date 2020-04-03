@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function App({ navigation }) {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -23,17 +23,17 @@ export default function App({ navigation }) {
           name="drawer"
           component={My_drawer}
           options={{
-            title: "M Y H O M E",
+            title: "M Y  H O M E",
             headerTintColor: "black",
 
-            headerLeft: navigation => (
-              <Button
-                icon="format-list-bulleted"
-                color="black"
-                style={{ width: 1 }}
-                onPress={() => navigation.openDrawer()}
-              ></Button>
-            ),
+            // headerLeft: navigation => (
+            //   <Button
+            //     icon="format-list-bulleted"
+            //     color="black"
+            //     style={{ width: 1 }}
+            //     onPress={() => navigation.openDrawer()}
+            //   ></Button>
+            // ),
             headerStyle: {
               backgroundColor: "#fff"
             }
