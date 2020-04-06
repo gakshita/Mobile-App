@@ -6,11 +6,13 @@ import * as ImagePicker from "expo-image-picker";
 export default class Add_picture extends React.Component {
   state = {
     uri: "",
+
     upload: false,
     icon: "camera",
   };
 
   delete = () => {
+    console.log("delete ===========================")
     this.setState({
       upload: false,
       uri: "",
@@ -19,6 +21,7 @@ export default class Add_picture extends React.Component {
   };
 
   openImagePickerAsync = async () => {
+    console.log("hiiii===========================")
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
     if (permissionResult.granted === false) {
@@ -58,9 +61,9 @@ export default class Add_picture extends React.Component {
             alignSelf: "flex-end",
           }}
           // onPress={this.openImagePickerAsync}
-          onPress={() => {
-            this.state.upload ? this.openImagePickerAsync() : this.delete();
-          }}
+          onPress={
+           ( this.state.upload ?this.delete  : this.openImagePickerAsync)
+          }
         >
           <Button icon={this.state.icon} color="black"></Button>
         </TouchableOpacity>

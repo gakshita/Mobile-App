@@ -7,7 +7,7 @@ const categories = data.categories;
 export default class Cards extends React.Component {
   render() {
     return (
-      <View style={{ height: "20%" }}>
+      <View style={{ height: 100 }}>
         <FlatList
           horizontal={true}
           data={categories}

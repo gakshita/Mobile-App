@@ -1,5 +1,7 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet,Dimensions } from "react-native";
+
+const { width: WIDTH } = Dimensions.get('window');
 
 const DATA = [
   {
@@ -27,9 +29,12 @@ export default function C2() {
       <FlatList
         horizontal={true}
         data={DATA}
+        style={{backgroundColor:"green" , width:"100%"}}
         renderItem={({ item }) => (
           <View style={style.list}>
+            <View >
             <Text style={{ fontSize: 30, color: "white" }}>{item.title}</Text>
+            </View>
           </View>
         )}
         keyExtractor={item => item.id}
@@ -41,8 +46,12 @@ export default function C2() {
 const style = StyleSheet.create({
   list: {
     backgroundColor: "red",
-    width: "50%",
+    width:WIDTH-40,
+    // width:"100%",
+    // width: "50%",
+    // width:"70%",
     padding: 30,
+    height:300,
     margin: 20
   }
 });
